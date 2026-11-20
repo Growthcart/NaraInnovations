@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nara Innovations website
 
-## Getting Started
+Next.js 16 (App Router, TypeScript) build of narainnovations.com. Static brochure site, tier S: no forms, cookies, analytics or database.
 
-First, run the development server:
+## Run
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build, all routes prerendered
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Routes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | Page |
+|---|---|
+| `/` | Home |
+| `/vision` | Our vision |
+| `/portfolio` | Portfolio |
+| `/news` | News |
+| `/contact` | Contact |
+| `/privacy-policy` | Privacy policy |
+| `/cookie-policy` | Cookie policy |
+| `/terms` | Terms of use |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Also generated: `/sitemap.xml`, `/robots.txt`, Open Graph and Twitter images.
 
-## Learn More
+## Where things are
 
-To learn more about Next.js, take a look at the following resources:
+- `src/config/site.ts`: company name, email, address, company number, nav links, legal "last updated" date. Change these in one place.
+- `src/app/globals.css`: the design (ported unchanged from the HTML prototype). Tokens are the CSS variables at the top.
+- `src/components/`: `Header`, `Footer`, `VideoHero`, `Panels` (feature panel, cards, standards), `Mockups` (the small UI previews), `LegalPage`.
+- `src/fonts/`: Plus Jakarta Sans, self-hosted through `next/font/local` (no request to Google).
+- `public/`: favicons, `brand/` logos, `media/hero.mp4` and poster.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Rules to keep
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The privacy and cookie policies say the site has no cookies, analytics or forms. Update both before adding any.
+- Contact is by email only.
+- Compliance Guru is "Launching soon". Update the News post and status tags (`Mockups.tsx`, `news/page.tsx`, `portfolio/page.tsx`) when it goes live.
+- Keep `autoPlay muted loop playsInline` on the hero video so it plays on phones.
 
-## Deploy on Vercel
+## Before going live
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Confirm the registered office and company number are still correct.
+- Deploy to Vercel and point narainnovations.com at it (check MX and other DNS records first so email keeps working).
