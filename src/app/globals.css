@@ -361,7 +361,8 @@ footer{background:var(--footer);color:var(--white);padding:64px 0 40px;font-size
 }
 @media (max-width:760px){
   .nav ul,.nav > .btn{display:none}
-  /* Menu button on the left, logo on the right */
+  /* Menu button on the left, logo right next to it */
+  .nav{justify-content:flex-start;gap:10px}
   .menu-btn{display:grid;place-items:center;order:-1;margin-left:-8px;width:44px;height:44px;padding:0;color:var(--black)}
 
   /* Full-screen panel under the header */
