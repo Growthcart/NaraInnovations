@@ -35,7 +35,8 @@ Also generated: `/sitemap.xml`, `/robots.txt`, Open Graph and Twitter images.
 
 ## Rules to keep
 
-- The privacy and cookie policies say the site has no cookies, analytics or forms. Update both before adding any.
+- The CookieYes banner script is loaded in `<head>` from `src/app/layout.tsx`. It only works on the domain registered in the CookieYes account.
+- The privacy and cookie policies describe one cookie (`cookieyes-consent`) and say there are no analytics, advertising or tracking tools, and no forms. If you add any of those, or turn on extra categories in CookieYes, update both policies first.
 - Contact is by email only.
 - Compliance Guru is "Launching soon". Update the News post and status tags (`Mockups.tsx`, `news/page.tsx`, `portfolio/page.tsx`) when it goes live.
 - Keep `autoPlay muted loop playsInline` on the hero video so it plays on phones.

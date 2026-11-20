@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/config/site";
 
@@ -41,8 +42,12 @@ export default function PrivacyPage() {
         browser type, the pages requested and the time of the request.
       </p>
       <p>
-        <strong>Cookies and analytics.</strong> This website does not use
-        cookies, analytics or tracking tools.
+        <strong>Cookies and analytics.</strong> This website uses one cookie,
+        set by our cookie consent tool, to remember your cookie choices. When
+        the consent tool loads, its provider receives your IP address and
+        browser details so it can show the banner and record your choice. We do
+        not use analytics, advertising or tracking tools. See our{" "}
+        <Link href="/cookie-policy">Cookie policy</Link> for details.
       </p>
       <p>
         This website has no contact forms, user accounts or payment facilities,
@@ -63,6 +68,13 @@ export default function PrivacyPage() {
             <td>
               Legitimate interests (running our business and answering people
               who contact us)
+            </td>
+          </tr>
+          <tr>
+            <td>Remember and record your cookie choices</td>
+            <td>
+              Legal obligation and legitimate interests (respecting your
+              choices and being able to show that we do)
             </td>
           </tr>
           <tr>
@@ -89,11 +101,13 @@ export default function PrivacyPage() {
       <h2>Who we share it with</h2>
       <p>
         We share personal information only with suppliers who help us run the
-        website and our email, and only so far as they need it:
+        website, our email and our cookie banner, and only so far as they need
+        it:
       </p>
       <ul>
         <li>our website hosting provider</li>
         <li>our email provider</li>
+        <li>our cookie consent provider, CookieYes</li>
       </ul>
       <p>
         We may also disclose information where the law requires it, or to

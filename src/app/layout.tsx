@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/config/site";
@@ -53,6 +54,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-GB" className={jakarta.variable}>
+      <head>
+        {/* CookieYes consent banner. Loaded first so it can block other scripts until consent. */}
+        <Script
+          id="cookieyes"
+          src="https://cdn-cookieyes.com/client_data/c8b271fb2d4c582684e11f3162b9b19e/script.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body>
         <a href="#main" className="skip">
           Skip to content
