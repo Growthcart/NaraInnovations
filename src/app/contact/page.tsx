@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
+import { pageMeta } from "@/lib/seo";
 import { AddressCard, MailCard } from "@/components/Mockups";
 import { Card } from "@/components/Panels";
 import { VideoHero } from "@/components/VideoHero";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "For questions about Nara Innovations or our products, email us.",
-  alternates: { canonical: "/contact" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Contact Us | Get in Touch with Nara Innovations",
+  description:
+    "Get in touch with Nara Innovations. Email info@narainnovations.com or write to our registered office at 128 City Road, London EC1V 2NX.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

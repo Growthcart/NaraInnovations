@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/config/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy policy",
-  alternates: { canonical: "/privacy-policy" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Privacy Policy | Nara Innovations",
+  description:
+    "How Nara Innovations Ltd collects and uses personal information on narainnovations.com, and your rights under UK data protection law.",
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPage() {
   return (

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/config/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of use",
-  alternates: { canonical: "/terms" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Terms of Use | Nara Innovations",
+  description:
+    "The terms for using narainnovations.com, which is run by Nara Innovations Ltd, registered in England and Wales.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

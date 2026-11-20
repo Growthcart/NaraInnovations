@@ -8,12 +8,14 @@
   --grey-700:#3A3A44;
   --indigo:#4B0082;
   --coral:#E64A19;
+  --blue:#0A5FEA;
+  --blue-dark:#084DC0;
   --footer:#000000;
   --max:1200px;
   --pad:clamp(20px,5vw,56px);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}
 body{margin:0;font-family:var(--font-jakarta),system-ui,sans-serif;color:var(--black);background:var(--white);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 svg{display:block}
@@ -32,19 +34,21 @@ p{margin:0}
 /* Header */
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--grey-100)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:15px;font-weight:500}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-size:15px;font-weight:600}
 .nav ul a{color:var(--grey-700);padding:6px 0;border-bottom:2px solid transparent}
 .nav ul a:hover{color:var(--black)}
 .nav ul a.active{color:var(--black);border-bottom-color:var(--black)}
 .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .15s ease,background .15s ease,border-color .15s ease}
 .btn:hover{transform:translateY(-1px)}
-.btn-dark{background:var(--black);color:var(--white)}
-.btn-dark:hover{background:var(--grey-700)}
+.btn-dark{background:var(--blue);color:var(--white)}
+.btn-dark:hover{background:var(--blue-dark)}
 .btn-light{background:var(--white);color:var(--black)}
 .btn-ghost{border:1.5px solid var(--grey-300);color:var(--black)}
 .btn-ghost:hover{border-color:var(--black)}
 .btn svg{width:16px;height:16px}
 .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer}
+/* Icon chip and chevron are for the mobile menu only (shown in the 760px query) */
+.nav-ico,.nav-chev,.nav-hint,.nav-foot{display:none}
 
 
 /* Hero */
@@ -356,11 +360,43 @@ footer{background:var(--footer);color:var(--white);padding:64px 0 40px;font-size
   .foot{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
-  .nav ul,.nav .btn{display:none}
-  .menu-btn{display:block}
-  .nav.open ul{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--white);padding:24px var(--pad);gap:18px;border-bottom:1px solid var(--grey-100)}
-  .nav.open ul a.active{border-bottom-color:transparent}
+  .nav ul,.nav > .btn{display:none}
+  /* Menu button on the left, logo on the right */
+  .menu-btn{display:grid;place-items:center;order:-1;margin-left:-8px;width:44px;height:44px;padding:0;color:var(--black)}
+
+  /* Full-screen panel under the header */
+  .nav.open ul{display:flex;flex-direction:column;gap:6px;position:absolute;top:72px;left:0;right:0;height:calc(100vh - 72px);height:calc(100dvh - 72px);overflow-y:auto;background:var(--white);padding:16px 16px 28px;border-top:1px solid var(--grey-100);font-weight:700;animation:menu-in .22s ease both}
+  .nav.open ul li{animation:menu-row .32s ease both}
+  .nav.open ul li:nth-child(2){animation-delay:.03s}
+  .nav.open ul li:nth-child(3){animation-delay:.06s}
+  .nav.open ul li:nth-child(4){animation-delay:.09s}
+  .nav.open ul li:nth-child(5){animation-delay:.12s}
+  .nav.open ul li:nth-child(6){animation-delay:.16s}
+
+  /* Rows: rounded icon tile, title with a short hint, arrow */
+  .nav.open ul a{display:flex;align-items:center;gap:16px;padding:12px;border:0;border-radius:18px;color:var(--black);transition:background .15s ease}
+  .nav.open ul a:active{background:var(--grey-50)}
+  .nav.open ul a.active{background:var(--grey-50)}
+  .nav-ico{display:grid;place-items:center;flex:none;width:52px;height:52px;border-radius:16px;background:var(--grey-100);color:var(--grey-700)}
+  .nav-ico svg{width:24px;height:24px}
+  .nav.open ul a.active .nav-ico{background:var(--black);color:var(--white)}
+  .nav-text{display:flex;flex:1;flex-direction:column;min-width:0;line-height:1.25}
+  .nav-label{font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--black)}
+  .nav-hint{display:block;font-size:13.5px;font-weight:500;color:var(--grey-500);margin-top:2px}
+  .nav-chev{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:50%;color:var(--grey-500)}
+  .nav-chev svg{width:18px;height:18px}
+  .nav.open ul a.active .nav-chev{color:var(--black)}
+
+  /* Bottom of the panel: call to action and contact details */
+  .nav.open ul li.nav-foot{display:block;margin-top:auto;padding:20px 4px 0;border-top:1px solid var(--grey-100)}
+  .nav.open ul a.nav-cta{width:100%;justify-content:center;height:54px;padding:0 24px;border-radius:999px;background:var(--blue);color:var(--white);font-size:16px;font-weight:600}
+  .nav.open ul a.nav-cta:active{background:var(--blue-dark)}
+  .nav-foot-meta{display:flex;flex-direction:column;align-items:center;gap:4px;margin:18px 0 0;text-align:center;font-size:13.5px;font-weight:500;color:var(--grey-500)}
+  .nav.open ul .nav-foot-meta a{display:inline;padding:0;border-radius:0;background:none;color:var(--black);font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 }
+@keyframes menu-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes menu-row{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.nav.open ul,.nav.open ul li{animation:none}}
 @media (max-width:560px){
   .grid4{grid-template-columns:1fr}
   .grid4 > div,.grid4 > div + div{padding:28px 0;border-left:0;border-top:1px solid #26262E}
@@ -379,3 +415,20 @@ footer{background:var(--footer);color:var(--white);padding:64px 0 40px;font-size
 main{animation:fade .4s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){main{animation:none}}
+
+/* Outline icons on step and standards tiles */
+.ico{display:block;color:#1F2430;margin-bottom:22px}
+.ico svg{width:40px;height:40px}
+.msteps .ico + h3,.vgrid .ico + h3{margin-top:0}
+
+/* Darker overlay on the home page hero only */
+.hero-video:not(.sub) .hv-overlay{background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.78) 55%,rgba(0,0,0,.62) 100%)}
+
+/* Brand banner image (home page) */
+.banner-img{margin:0;border-radius:20px;overflow:hidden;background:#000}
+.banner-img img{display:block;width:100%;height:auto}
+
+/* Home hero description: two lines on desktop */
+@media (min-width:961px){
+  .hero-video:not(.sub) .lead{max-width:800px;text-wrap:balance}
+}

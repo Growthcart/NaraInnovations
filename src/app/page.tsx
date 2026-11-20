@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { site } from "@/config/site";
 import { Card, FeaturePanel } from "@/components/Panels";
 import {
   ChecklistStack,
@@ -5,8 +8,14 @@ import {
   GapCard,
   StageCard,
 } from "@/components/Mockups";
+import { LineIcon } from "@/components/icons";
 import { SmartLink } from "@/components/SmartLink";
 import { VideoHero } from "@/components/VideoHero";
+
+export const metadata: Metadata = {
+  title: { absolute: site.homeTitle },
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (
@@ -59,7 +68,7 @@ export default function HomePage() {
           </div>
           <div className="msteps">
             <div>
-              <span className="mn">01</span>
+              <LineIcon name="search" />
               <h3>Find the gap</h3>
               <p>
                 Work that is important, repeated often and poorly served by the
@@ -67,7 +76,7 @@ export default function HomePage() {
               </p>
             </div>
             <div>
-              <span className="mn">02</span>
+              <LineIcon name="layers" />
               <h3>Invest and build</h3>
               <p>
                 We back the product with our own capital, team and technology,
@@ -75,7 +84,7 @@ export default function HomePage() {
               </p>
             </div>
             <div>
-              <span className="mn">03</span>
+              <LineIcon name="growth" />
               <h3>Own and grow</h3>
               <p>
                 We run the product long term and add to the family, one problem
@@ -168,6 +177,20 @@ export default function HomePage() {
               compliance duties.
             </p>
           </FeaturePanel>
+        </div>
+      </section>
+
+      <section className="block">
+        <div className="wrap">
+          <figure className="banner-img">
+            <Image
+              src="/media/nara-innovations-banner.jpg"
+              alt="Nara Innovations: Shaping tomorrow through technology"
+              width={1920}
+              height={1080}
+              sizes="(max-width: 1200px) 100vw, 1200px"
+            />
+          </figure>
         </div>
       </section>
     </>

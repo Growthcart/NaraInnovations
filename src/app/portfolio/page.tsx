@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
+import { pageMeta } from "@/lib/seo";
 import { CgProductWindow, MailCard, PortfolioList } from "@/components/Mockups";
 import { Card, FeaturePanel } from "@/components/Panels";
 import { VideoHero } from "@/components/VideoHero";
 
-export const metadata: Metadata = {
-  title: "Our portfolio",
-  alternates: { canonical: "/portfolio" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Our Portfolio: Compliance Guru Software | Nara Innovations",
+  description:
+    "Compliance Guru helps UK sponsor licence holders stay on top of their Home Office sponsor duties. Launching soon from Nara Innovations.",
+  path: "/portfolio",
+});
 
 export default function PortfolioPage() {
   return (

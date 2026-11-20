@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
+import { pageMeta } from "@/lib/seo";
 import {
   CgGapWindow,
   FamilyList,
@@ -10,10 +11,12 @@ import { Card, FeaturePanel, Standards } from "@/components/Panels";
 import { SmartLink } from "@/components/SmartLink";
 import { VideoHero } from "@/components/VideoHero";
 
-export const metadata: Metadata = {
-  title: "Our vision",
-  alternates: { canonical: "/vision" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Our Vision: Technology for Work and Life | Nara Innovations",
+  description:
+    "Nara Innovations wants the necessary tasks in work and life to take less time and go wrong less often. See how we choose and build our products.",
+  path: "/vision",
+});
 
 export default function VisionPage() {
   return (

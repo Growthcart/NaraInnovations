@@ -23,8 +23,8 @@ const jakarta = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "NARA Innovations Ltd",
-    template: "%s | NARA Innovations",
+    default: site.homeTitle,
+    template: "%s | Nara Innovations",
   },
   description: site.description,
   icons: {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "NARA Innovations",
     locale: "en_GB",
-    title: "NARA Innovations Ltd",
+    title: site.homeTitle,
     description: site.description,
     url: "/",
   },

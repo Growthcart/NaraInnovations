@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/config/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Cookie policy",
-  alternates: { canonical: "/cookie-policy" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Cookie Policy | Nara Innovations",
+  description:
+    "Which cookies narainnovations.com uses, what they do, and how to manage your cookie choices.",
+  path: "/cookie-policy",
+});
 
 export default function CookiePage() {
   return (

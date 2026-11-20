@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { LineIcon, type LineIconName } from "./icons";
 import { SmartLink } from "./SmartLink";
 
 /** Black feature panel with a browser-window preview on the right (.cg). */
@@ -64,19 +65,19 @@ export function Card({
   );
 }
 
-const standards = [
-  ["01", "Usefulness first", "A product earns its place by saving time or reducing risk for the people using it."],
-  ["02", "Honest claims", "We say what our products do and what they do not do. Software can support good decisions, and the decisions stay with the people using it."],
-  ["03", "Respect for data", "We collect what a product needs and no more, and we protect it in line with UK data protection law."],
-  ["04", "Long-term thinking", "We build products we plan to run and improve for years."],
+const standards: [LineIconName, string, string][] = [
+  ["clock", "Usefulness first", "A product earns its place by saving time or reducing risk for the people using it."],
+  ["shield", "Honest claims", "We say what our products do and what they do not do. Software can support good decisions, and the decisions stay with the people using it."],
+  ["lock", "Respect for data", "We collect what a product needs and no more, and we protect it in line with UK data protection law."],
+  ["hourglass", "Long-term thinking", "We build products we plan to run and improve for years."],
 ];
 
 export function Standards() {
   return (
     <div className="vgrid">
-      {standards.map(([n, h, p]) => (
-        <div key={n}>
-          <span className="mn">{n}</span>
+      {standards.map(([icon, h, p]) => (
+        <div key={h}>
+          <LineIcon name={icon} />
           <h3>{h}</h3>
           <p>{p}</p>
         </div>

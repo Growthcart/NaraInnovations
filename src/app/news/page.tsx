@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
+import { pageMeta } from "@/lib/seo";
 import { CgMarkSvg } from "@/components/icons";
 import { VideoHero } from "@/components/VideoHero";
 
-export const metadata: Metadata = {
-  title: "News",
-  description: "Company updates and product announcements from Nara Innovations.",
-  alternates: { canonical: "/news" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "News: Compliance Guru Launching Soon | Nara Innovations",
+  description:
+    "Compliance Guru, the first product from Nara Innovations, is launching soon for UK sponsor licence holders. Read the announcement.",
+  path: "/news",
+});
 
 export default function NewsPage() {
   return (
